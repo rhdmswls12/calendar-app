@@ -1,0 +1,252 @@
+html {
+  --color-black: #0E111B;
+  --color-white: #FFF;
+}
+body {
+  background-color: var(--color-black);
+  font-family: "Roboto", sans-serif;
+  /* color: var(--color-white); */
+}
+
+
+.schedule {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #985986;
+}
+
+.headline {
+  position: absolute;
+  width: 80%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.headline h1 {
+  font-family: "Oswald", sans-serif;
+  font-size: 100px;
+  line-height: 1;
+  margin-bottom: 40px;
+}
+.headline h1 span {
+  color: var(--color-white);
+}
+.wrapper:not(.modifying) {
+  /* width: 450px; height는 x*/
+  width: 900px;
+  height: 700px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto auto;
+  background-color: var(--color-white);
+  border-radius: 10px;
+}
+.wrapper.modifying{
+  width: 450px;
+  background-color: var(--color-white);
+  border-radius: 10px;
+  transition: .7s;
+}
+.wrapper header {
+  padding: 50px 60px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.wrapper header.modifying {
+  padding: 25px 30px 10px;
+  display: flex;
+  justify-content: space-between;
+  transition: .7s;
+}
+.current-date span {
+  font-weight: 700;
+}
+header .icons span {
+  height: 38px;
+  width: 38px;
+  color: #878787;
+  font-size: 1.9rem;
+  margin: 0 1px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 38px;
+  border-radius: 50%;
+}
+header .icons span:hover {
+  background-color: #f2f2f2;
+}
+header .icons span:last-child {
+  margin-right: -10px;
+}
+.calendar {
+  padding: 20px;
+}
+.calendar ul {
+  display: flex;
+  list-style: none; 
+  flex-wrap: wrap
+}
+.calendar .days {
+  margin-bottom: 20px;
+}
+.calendar .weeks li {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.calendar ul li {
+  width: calc(100% / 7);
+  position: relative;
+}
+.calendar .days.modifying li{
+  z-index: 2;
+  cursor: pointer;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.calendar .days:not(.modifying) li{
+  z-index: 2;
+  cursor: pointer;
+  height: 100px;
+  margin-top: 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.days li.inactive {
+  color: #aaa;
+}
+.days li.active {
+  color: #fff;
+}
+.calendar .days li::before {
+  content: "";
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  top: 8.5px;
+  left: 8.5px;
+  border-radius: 50%;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+}
+.calendar .days.modifying li::before {
+  content: "";
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+}
+.calendar .days:not(.modifying) li div.added {
+  position: absolute;
+  margin-top: 10px;
+  top: 20px;
+  width: 100%;
+  height: 20px;
+  color:#0E111B;
+  background-color: antiquewhite;
+}
+
+
+.days li:hover::before {
+  background-color: #f2f2f2;
+}
+.days li.active::before {
+  background-color: #985986;
+}
+.days.modifying li.active::before {
+  background-color: #985986;
+}
+
+
+.planner {
+  display: none;
+}
+.planner.active {
+  display: block;
+  height: 380px;
+  width: 450px;
+  margin-left: 20px;
+  background-color: var(--color-white);
+  border-radius: 10px;
+  transform: translateX(0px);
+  transition: 1s;
+}
+.planner.active .container {
+  padding: 25px 30px 10px;
+}
+.planner.active .container h3 {
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+.planner.active .container h4 {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.planner.active .input {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.planner.active  input {
+  border-radius: 5px;
+  width: 80%;
+  height: 30px;
+}
+.planner.active .input button {
+  outline: none;
+  background-color: #985986;
+  color: #fff;
+  border-radius: 50%;
+  border: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer {
+  position: absolute;
+  right: 100px;
+  margin-bottom: 40px;
+}
+.footer a {
+  color: var(--color-black);
+  font-family: "Oswald", sans-serif;
+  font-size: 70px;
+  text-decoration: none;
+  line-height: 1;
+}
+.footer span {
+  color: var(--color-white);
+}
+
+@media (max-width: 1600px) {
+  .headline {
+    display: none;
+  }
+  .footer {
+    display: none;
+  }
+}
